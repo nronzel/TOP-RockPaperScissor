@@ -54,9 +54,12 @@ function playRound(playerSelection, computerSelection) {
     } 
 }
 
-// loops the playRound function to play each round and then outputs winner at the end
+
 function game() {
+    // set the number of rounds with the below variable
     let rounds = 5;
+
+    // loops through "x" rounds and accumulates the results
     for (let i = 0; i < rounds; i++) {
         let playerSelection = "scissors";
         let computerSelection = getComputerChoice();
@@ -74,20 +77,4 @@ function game() {
     // }
 }
 
-
-
 game();
-
-// TODO new function called "game()"
-// this function will loop 5 times calling playRound each time
-// for each round determine the winner and increment their score
-// highest score at the end wins
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
