@@ -2,57 +2,92 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 
+// initializes scores & sets to 0
+let playerScore = 0;
+let compScore = 0;
+
 // Gets a random choice to use for the computers answer
 function getComputerChoice() {
     const options = ["rock","paper","scissors"];
-    let compChoice = options[Math.floor(Math.random() * options.length)];
-    return compChoice;
+    return options[Math.floor(Math.random() * options.length)];
 }
 
 // Plays one round of the game
 function playRound(playerSelection, computerSelection) {
 
-    console.log(playerSelection);
-    console.log(computerSelection);
-    
+    // if players select the same thing, output "Tie"
     if (playerSelection === computerSelection) {
         console.log("Tie.")
     } 
+
+    // if play selects rock and comp selects scissors, player wins, else loses
     else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
             console.log("Player Won! Rock beats scissors!");
+            playerScore += 1;
         }else{
             console.log("Player Lost..");
+            compScore += 1;
         }
-    } else if (playerSelection == "paper") {
+    }
+
+    // if player selects paper and comp selects rock, player wins, else loses
+    else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
             console.log("Player Wins! Paper beats rock!");
+            playerScore += 1;
         }else{
             console.log("Player Lost...");
+            compScore += 1;
         }
-    } else if (playerSelection == "scissors") {
+    }
+
+    // if player selects scissors and comp selects paper, player wins, else loses
+    else if (playerSelection == "scissors") {
         if (computerSelection == "paper") {
             console.log("Player Wins! Scissors beats paper!");
+            playerScore += 1;
         }else{
             console.log("Player Lost....");
+            compScore += 1;
         }
     } 
 }
 
-let playerSelection = "scissors";
-let computerSelection = getComputerChoice();
+// loops the playRound function to play each round and then outputs winner at the end
+function game() {
+    let rounds = 5;
+    for (let i = 0; i < rounds; i++) {
+        let playerSelection = "scissors";
+        let computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
 
-playRound(playerSelection, computerSelection);
+    // compares scores after the 5 rounds and console.logs the winner (or tie)
+    // if (playerScore > compScore) {
+    //     console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
+    // }
+    // else if (playerScore == compScore) {
+    //     console.log(`The game is a tie! Player: ${playerScore} | Cpu: ${compScore} `);
+    // }else{
+    //     console.log(`Player loses! Cpu: ${compScore} | Player: ${playerScore}`);
+    // }
+}
 
 
-// single round of RPS:
-// function that takes computers choice and players choice
-// rock beats scissors
-// paper beats rock
-// scissors beats paper
-// if playerchoice = computerchoice
-// print "game is draw"
-// else if playerchoice = rock & computerchoice = scissors
-// print player wins
-// else if playerchoice = paper 
-// print 
+
+game();
+
+// TODO new function called "game()"
+// this function will loop 5 times calling playRound each time
+// for each round determine the winner and increment their score
+// highest score at the end wins
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
