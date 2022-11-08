@@ -30,16 +30,16 @@ function playRound(playerSelection, computerSelection) {
         }else{
             console.log("Player Lost...");
         }
-//     } else if (playerSelection == "scissors") {
-//         if (computerSelection == "paper") {
-//             console.log("Player Wins! Scissors beats paper!");
-//         }else{
-//             console.log("Player Lost....");
-//         }
+    } else if (playerSelection == "scissors") {
+        if (computerSelection == "paper") {
+            console.log("Player Wins! Scissors beats paper!");
+        }else{
+            console.log("Player Lost....");
+        }
     } 
 }
 
-let playerSelection = "paper";
+let playerSelection = "scissors";
 let computerSelection = getComputerChoice();
 
 playRound(playerSelection, computerSelection);
