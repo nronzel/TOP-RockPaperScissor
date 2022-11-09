@@ -19,14 +19,14 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    // if players select the same thing, output "Tie"
+    // if player & comp select the same thing, output "Tie"
     if (playerSelection === computerSelection) {
         console.log("Tie.");
     } 
 
-    // if play selects rock and comp selects scissors, player wins, else loses
-    else if (playerSelection == "rock") {
-        if (computerSelection == "scissors") {
+    // if player selects rock and comp selects scissors, player wins, else loses
+    else if (playerSelection === "rock") {
+        if (computerSelection === "scissors") {
             console.log("Player Won! Rock beats scissors!");
             playerScore += 1;
         }else{
@@ -36,8 +36,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     // if player selects paper and comp selects rock, player wins, else loses
-    else if (playerSelection == "paper") {
-        if (computerSelection == "rock") {
+    else if (playerSelection === "paper") {
+        if (computerSelection === "rock") {
             console.log("Player Wins! Paper beats rock!");
             playerScore += 1;
         }else{
@@ -47,8 +47,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     // if player selects scissors and comp selects paper, player wins, else loses
-    else if (playerSelection == "scissors") {
-        if (computerSelection == "paper") {
+    else if (playerSelection === "scissors") {
+        if (computerSelection === "paper") {
             console.log("Player Wins! Scissors beats paper!");
             playerScore += 1;
         }else{
@@ -64,7 +64,8 @@ function game() {
 
     // loops through "x" rounds and accumulates the results
     for (let i = 0; i < rounds; i++) {
-        let playerSelection = "ROCK".toLowerCase(); // prompt("Please Choose! Rock, Paper, Scissors: ")
+        // playerSelection hardcoded for testing
+        let playerSelection = "rock".toLowerCase(); // prompt("Rock Paper or Scissor? " ).toLowerCase();
         let computerSelection = getComputerChoice().toLowerCase();
         console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
         playRound(playerSelection, computerSelection);
@@ -74,7 +75,7 @@ function game() {
     if (playerScore > compScore) {
         console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
     }
-    else if (playerScore == compScore) {
+    else if (playerScore === compScore) {
         console.log(`The game is a tie! Player: ${playerScore} | Cpu: ${compScore} `);
     }else{
         console.log(`Player loses! Cpu: ${compScore} | Player: ${playerScore}`);
