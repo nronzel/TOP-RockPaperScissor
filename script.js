@@ -1,12 +1,9 @@
 // The Odin Project
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
-
+// ----------------------------
 // TODO Input Verification
-
-// The Odin Project
-// Rock Paper Scissors Game
-// Written by: Nicholas Ronzel
+// ----------------------------
 
 let playerScore = 0;
 let compScore = 0;
