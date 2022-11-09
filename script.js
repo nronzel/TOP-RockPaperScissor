@@ -3,8 +3,10 @@
 // Written by: Nicholas Ronzel
 
 // TODO Input Verification
-// TODO convert input to lowercase
-// TODO show score at the end of each round
+
+// The Odin Project
+// Rock Paper Scissors Game
+// Written by: Nicholas Ronzel
 
 let playerScore = 0;
 let compScore = 0;
@@ -19,7 +21,7 @@ function playRound(playerSelection, computerSelection) {
 
     // if players select the same thing, output "Tie"
     if (playerSelection === computerSelection) {
-        console.log("Tie.")
+        console.log("Tie.");
     } 
 
     // if play selects rock and comp selects scissors, player wins, else loses
@@ -58,12 +60,12 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     // set the number of rounds
-    const rounds = 10;
+    const rounds = 5;
 
     // loops through "x" rounds and accumulates the results
     for (let i = 0; i < rounds; i++) {
-        let playerSelection = "rock"; // prompt("Please Choose! Rock, Paper, Scissors: ")
-        let computerSelection = getComputerChoice();
+        let playerSelection = "ROCK".toLowerCase(); // prompt("Please Choose! Rock, Paper, Scissors: ")
+        let computerSelection = getComputerChoice().toLowerCase();
         console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
         playRound(playerSelection, computerSelection);
     }
