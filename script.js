@@ -4,11 +4,10 @@
 
 // TODO Input Verification
 // TODO convert input to lowercase
+// TODO show score at the end of each round
 
 let playerScore = 0;
 let compScore = 0;
-let playerSelection = "rock"; // prompt("Please Choose! Rock, Paper, Scissors: ")
-let computerSelection = getComputerChoice();
 
 // Gets a random choice to use for the computers answer
 function getComputerChoice() {
@@ -59,15 +58,16 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     // set the number of rounds
-    const rounds = 5;
+    const rounds = 10;
 
     // loops through "x" rounds and accumulates the results
     for (let i = 0; i < rounds; i++) {
-
+        let playerSelection = "rock"; // prompt("Please Choose! Rock, Paper, Scissors: ")
+        let computerSelection = getComputerChoice();
         console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
         playRound(playerSelection, computerSelection);
     }
-
+    
     // compares scores after the 5 rounds and console.logs the winner (or tie)
     if (playerScore > compScore) {
         console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
