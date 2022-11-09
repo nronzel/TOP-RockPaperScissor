@@ -2,7 +2,6 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 
-// ! BUG: Undefined output after each round in the for loop of game() function
 // TODO Input Verification
 // TODO convert input to lowercase
 
@@ -65,13 +64,10 @@ function game() {
     // loops through "x" rounds and accumulates the results
     for (let i = 0; i < rounds; i++) {
 
-        // console.log(typeof playerSelection);
-        // console.log(typeof computerSelection);
         console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
-        console.log(playRound(playerSelection, computerSelection));
+        playRound(playerSelection, computerSelection);
     }
-    
-    // return;
+
     // compares scores after the 5 rounds and console.logs the winner (or tie)
     if (playerScore > compScore) {
         console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
