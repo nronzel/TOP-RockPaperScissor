@@ -8,16 +8,34 @@
 // let playerSelection = "";
 const btn = document.querySelectorAll('button');
 const result = document.querySelector('span.result');
+const pScore = document.querySelector('span.playerScore');
+const cScore = document.querySelector('span.cpuScore');
 
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
         let playerSelection = button.value;
         let computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
+        pScore.textContent = playerScore;
+        cScore.textContent = compScore;
+
+        if (playerScore >= 5 || compScore >= 5) {
+            if (playerScore > compScore) {
+                result.textContent = "Player Wins!"
+                resetScores();
+            }else {
+                result.textContent = "CPU Wins! Better Luck Next Time.."
+                resetScores();
+            }
+        }
     });
 });
 
-console.log(result);
+function resetScores() {
+    playerScore = 0;
+    compScore = 0;
+}
+
 
 let playerScore = 0;
 let compScore = 0;
@@ -32,53 +50,39 @@ function playRound(playerSelection, computerSelection) {
     // let computerSelection = getComputerChoice();
 
     if (playerSelection === computerSelection) {
-        console.log("Tie.");
         result.textContent="Tie.";
-        return "Tie.";
     } 
 
     // if player selects rock and comp selects scissors, player wins, else loses
     else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-            console.log("Player Won! Rock beats scissors!");
             playerScore += 1;
             result.textContent="Player Won! Rock beats scissors!";
-            return "Player Won! Rock beats scissosr!";
         }else{
-            console.log("Player Lost..");
             compScore += 1;
             result.textContent="Player Lost..";
-            return "Player Lost..";
         }
     }
 
     // if player selects paper and comp selects rock, player wins, else loses
     else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
-            console.log("Player Wins! Paper beats rock!");
             playerScore += 1;
             result.textContent="Player Wins! Paper beats rock!";
-            return "Player Wins! Paper beats rock!";
         }else{
-            console.log("Player Lost...");
             compScore += 1;
             result.textContent="Player Lost...";
-            return "Player Lost...";
         }
     }
 
     // if player selects scissors and comp selects paper, player wins, else loses
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
-            console.log("Player Wins! Scissors beats paper!");
             playerScore += 1;
             result.textContent="Player Wins! Scissors beats paper!";
-            return "Player Wins! Scissors beats paper!";
         }else{
-            console.log("Player Lost....");
             compScore += 1;
             result.textContent="Player Lost....";
-            return "Player Lost....";
         }
     }
 }
