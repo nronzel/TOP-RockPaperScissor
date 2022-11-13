@@ -2,10 +2,13 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 // ----------------------------
+// ! BUG - need to click 'reset' twice to completely reset, not sure why
 // ----------------------------
 
+// score initialization
 let playerScore = 0;
 let compScore = 0;
+
 const btn = document.querySelectorAll('button');
 const h3 = document.querySelector('h3');
 const result = document.querySelector('h3.result');
@@ -14,12 +17,17 @@ const cScore = document.querySelector('p.cpuScore');
 const reset = document.querySelector('.reset');
 
 console.log(h3);
-reset.addEventListener('click', resetScores());
+
+reset.addEventListener('click', resetScores);
+
+// adds event listener on each button
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
         let playerSelection = button.value;
         let computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
+        
+        // updates scores on screen with current score
         pScore.textContent = playerScore;
         cScore.textContent = compScore;
 
@@ -27,34 +35,31 @@ btn.forEach((button)  => {
             if (playerScore > compScore) {
                 result.textContent = "Game Over: You Win!";
                 playerWin();
-                //resetScores();
             }else {
                 result.textContent = "Game Over: CPU Wins! Better Luck Next Time..";
                 cpuWin();
-                //resetScores();
             }
         }
     });
 });
 
-
-
 function resetScores() {
-    playerScore = 0;
-    compScore = 0;
-    h3.classList.remove('pWin')
-    h3.classList.remove('cWin')
+    pScore.textContent = "";
+    cScore.textContent = "";
+    h3.classList.remove('pWin');
+    h3.classList.remove('cWin');
+    result.textContent = "";
 }
 
 function playerWin() {
-    h3.classList.add('pWin')
+    h3.classList.add('pWin');
+    btn.disabled=true;
 }
 
 function cpuWin() {
     h3.classList.add('cWin');
+    btn.disabled=true;
 }
-
-
 
 // Gets a random choice to use for the computers answer
 function getComputerChoice() {
