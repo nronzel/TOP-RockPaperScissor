@@ -7,6 +7,7 @@
 
 // let playerSelection = "";
 const btn = document.querySelectorAll('button');
+const result = document.querySelector('span.result');
 
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
@@ -16,6 +17,7 @@ btn.forEach((button)  => {
     });
 });
 
+console.log(result);
 
 let playerScore = 0;
 let compScore = 0;
@@ -31,6 +33,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         console.log("Tie.");
+        result.textContent="Tie.";
         return "Tie.";
     } 
 
@@ -39,10 +42,12 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === "scissors") {
             console.log("Player Won! Rock beats scissors!");
             playerScore += 1;
+            result.textContent="Player Won! Rock beats scissors!";
             return "Player Won! Rock beats scissosr!";
         }else{
             console.log("Player Lost..");
             compScore += 1;
+            result.textContent="Player Lost..";
             return "Player Lost..";
         }
     }
@@ -52,10 +57,12 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === "rock") {
             console.log("Player Wins! Paper beats rock!");
             playerScore += 1;
+            result.textContent="Player Wins! Paper beats rock!";
             return "Player Wins! Paper beats rock!";
         }else{
             console.log("Player Lost...");
             compScore += 1;
+            result.textContent="Player Lost...";
             return "Player Lost...";
         }
     }
@@ -65,10 +72,12 @@ function playRound(playerSelection, computerSelection) {
         if (computerSelection === "paper") {
             console.log("Player Wins! Scissors beats paper!");
             playerScore += 1;
+            result.textContent="Player Wins! Scissors beats paper!";
             return "Player Wins! Scissors beats paper!";
         }else{
             console.log("Player Lost....");
             compScore += 1;
+            result.textContent="Player Lost....";
             return "Player Lost....";
         }
     }
