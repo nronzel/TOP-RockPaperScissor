@@ -5,24 +5,16 @@
 // TODO Input Verification
 // ----------------------------
 
-
+// let playerSelection = "";
 const btn = document.querySelectorAll('button');
-
-// btn.addEventListener('click', displayVal)
-
-
-// function displayVal() {
-//     console.log(buttonVal);
-// }
 
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
-        console.log(button.value);
+        let playerSelection = button.value;
+        let computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
     });
 });
-
-
-
 
 
 let playerScore = 0;
