@@ -2,15 +2,19 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 // ----------------------------
-// TODO Input Verification
 // ----------------------------
 
-// let playerSelection = "";
+let playerScore = 0;
+let compScore = 0;
 const btn = document.querySelectorAll('button');
-const result = document.querySelector('span.result');
-const pScore = document.querySelector('span.playerScore');
-const cScore = document.querySelector('span.cpuScore');
+const h3 = document.querySelector('h3');
+const result = document.querySelector('h3.result');
+const pScore = document.querySelector('p.playerScore');
+const cScore = document.querySelector('p.cpuScore');
+const reset = document.querySelector('.reset');
 
+console.log(h3);
+reset.addEventListener('click', resetScores());
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
         let playerSelection = button.value;
@@ -21,24 +25,36 @@ btn.forEach((button)  => {
 
         if (playerScore >= 5 || compScore >= 5) {
             if (playerScore > compScore) {
-                result.textContent = "Player Wins!"
-                resetScores();
+                result.textContent = "Game Over: You Win!";
+                playerWin();
+                //resetScores();
             }else {
-                result.textContent = "CPU Wins! Better Luck Next Time.."
-                resetScores();
+                result.textContent = "Game Over: CPU Wins! Better Luck Next Time..";
+                cpuWin();
+                //resetScores();
             }
         }
     });
 });
 
+
+
 function resetScores() {
     playerScore = 0;
     compScore = 0;
+    h3.classList.remove('pWin')
+    h3.classList.remove('cWin')
+}
+
+function playerWin() {
+    h3.classList.add('pWin')
+}
+
+function cpuWin() {
+    h3.classList.add('cWin');
 }
 
 
-let playerScore = 0;
-let compScore = 0;
 
 // Gets a random choice to use for the computers answer
 function getComputerChoice() {
@@ -57,10 +73,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
             playerScore += 1;
-            result.textContent="Player Won! Rock beats scissors!";
+            result.textContent="You Won! Rock beats scissors!";
         }else{
             compScore += 1;
-            result.textContent="Player Lost..";
+            result.textContent="You lost that round.";
         }
     }
 
@@ -68,10 +84,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
             playerScore += 1;
-            result.textContent="Player Wins! Paper beats rock!";
+            result.textContent="You Won! Paper beats rock!";
         }else{
             compScore += 1;
-            result.textContent="Player Lost...";
+            result.textContent="You lost that round.";
         }
     }
 
@@ -79,36 +95,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
             playerScore += 1;
-            result.textContent="Player Wins! Scissors beats paper!";
+            result.textContent="You Won! Scissors beats paper!";
         }else{
             compScore += 1;
-            result.textContent="Player Lost....";
+            result.textContent="You lost that round.";
         }
     }
 }
-
-// function game() {
-//     // set the number of rounds
-//     const rounds = 5;
-
-//     // loops through "x" rounds and accumulates the results
-//     for (let i = 0; i < rounds; i++) {
-//         // playerSelection hardcoded for testing
-//         let playerSelection = "rock".toLowerCase(); // prompt("Rock Paper or Scissor? " ).toLowerCase();
-//         let computerSelection = getComputerChoice().toLowerCase();
-//         console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
-//         playRound(playerSelection, computerSelection);
-//     }
-    
-//     // compares scores after the 5 rounds and console.logs the winner (or tie)
-//     if (playerScore > compScore) {
-//         console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
-//     }
-//     else if (playerScore === compScore) {
-//         console.log(`The game is a tie! Player: ${playerScore} | Cpu: ${compScore} `);
-//     }else{
-//         console.log(`Player loses! Cpu: ${compScore} | Player: ${playerScore}`);
-//     }
-// }
-
-// game();
