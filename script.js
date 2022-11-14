@@ -2,36 +2,46 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 // ----------------------------
-// ! BUG - need to click 'reset' twice to completely reset, not sure why
+// ! BUG - after 5 round prevent the buttons from being clicked
+// can possibly handle this 2 ways:
+// 1 - set buttons to disabled state at game end
+// 2 - turn off the event listener after game end
 // ----------------------------
 
 // score initialization
 let playerScore = 0;
 let compScore = 0;
+let round = 1;
+const max_rounds = 5;
 
 const btn = document.querySelectorAll('button');
+const btns = document.querySelector('div.buttons');
 const h3 = document.querySelector('h3');
 const result = document.querySelector('h3.result');
 const pScore = document.querySelector('p.playerScore');
 const cScore = document.querySelector('p.cpuScore');
 const reset = document.querySelector('.reset');
 
-console.log(h3);
-
 reset.addEventListener('click', resetScores);
-
+let winner = "";
 // adds event listener on each button
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
         let playerSelection = button.value;
         let computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
+        // playRound(playerSelection, computerSelection);
+        if (round <= max_rounds) {
+            playRound(playerSelection, computerSelection);
+        }
         
         // updates scores on screen with current score
         pScore.textContent = playerScore;
         cScore.textContent = compScore;
 
-        if (playerScore >= 5 || compScore >= 5) {
+        if (playerScore === 5 || compScore === 5) {
+            // btn.disabled = true;
+            btns.disabled = true;
+            
             if (playerScore > compScore) {
                 result.textContent = "Game Over: You Win!";
                 playerWin();
@@ -55,12 +65,10 @@ function resetScores() {
 
 function playerWin() {
     h3.classList.add('pWin');
-    btn.disabled=true;
 }
 
 function cpuWin() {
     h3.classList.add('cWin');
-    btn.disabled=true;
 }
 
 // Gets a random choice to use for the computers answer
