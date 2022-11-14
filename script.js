@@ -44,11 +44,13 @@ btn.forEach((button)  => {
 });
 
 function resetScores() {
-    pScore.textContent = "";
-    cScore.textContent = "";
+    playerScore = 0;
+    compScore = 0;
+    pScore.textContent = 0;
+    cScore.textContent = 0;
     h3.classList.remove('pWin');
     h3.classList.remove('cWin');
-    result.textContent = "";
+    result.textContent = "Choose an option";
 }
 
 function playerWin() {
