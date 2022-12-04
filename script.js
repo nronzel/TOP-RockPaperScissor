@@ -19,7 +19,7 @@ const h3 = document.querySelector('h3');
 const result = document.querySelector('h3.result');
 const pScore = document.querySelector('p.playerScore');
 const cScore = document.querySelector('p.cpuScore');
-const reset = document.querySelector('.reset');
+const reset = document.querySelector('.reset button');
 const choices = document.querySelectorAll('.choice')
 
 reset.addEventListener('click', resetScores);
