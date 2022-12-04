@@ -15,21 +15,20 @@ let round = 1;
 const max_rounds = 5;
 
 const btn = document.querySelectorAll('button');
-const btns = document.querySelector('div.buttons');
 const h3 = document.querySelector('h3');
 const result = document.querySelector('h3.result');
 const pScore = document.querySelector('p.playerScore');
 const cScore = document.querySelector('p.cpuScore');
 const reset = document.querySelector('.reset');
+const choices = document.querySelectorAll('.choice')
 
 reset.addEventListener('click', resetScores);
-let winner = "";
+// let winner = "";
 // adds event listener on each button
 btn.forEach((button)  => {
     button.addEventListener('click', () => {
         let playerSelection = button.value;
         let computerSelection = getComputerChoice();
-        // playRound(playerSelection, computerSelection);
         if (round <= max_rounds) {
             playRound(playerSelection, computerSelection);
         }
@@ -38,20 +37,29 @@ btn.forEach((button)  => {
         pScore.textContent = playerScore;
         cScore.textContent = compScore;
 
-        if (playerScore === 5 || compScore === 5) {
-            // btn.disabled = true;
-            btns.disabled = true;
-            
-            if (playerScore > compScore) {
-                result.textContent = "Game Over: You Win!";
+        checkWin();
+    });
+});
+
+function checkWin() {
+    if (playerScore === 5 || compScore === 5) {
+        if (playerScore > compScore) {
+            result.textContent = "Game Over: You Win!";
                 playerWin();
+                disableBtn();
             }else {
                 result.textContent = "Game Over: CPU Wins! Better Luck Next Time..";
                 cpuWin();
-            }
+                disableBtn();
         }
-    });
-});
+    }
+}
+
+function disableBtn() {
+    choices.forEach((btn) => {
+        btn.disabled = true;
+    })
+}
 
 function resetScores() {
     playerScore = 0;
@@ -61,6 +69,9 @@ function resetScores() {
     h3.classList.remove('pWin');
     h3.classList.remove('cWin');
     result.textContent = "Choose an option";
+    choices.forEach((btn) => {
+        btn.disabled = false;
+    })
 }
 
 function playerWin() {
@@ -88,10 +99,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
             playerScore += 1;
-            result.textContent="You Won! Rock beats scissors!";
+            result.textContent=`You Won! ${playerSelection} beats ${computerSelection}`;
         }else{
             compScore += 1;
-            result.textContent="You lost that round.";
+            result.textContent=`You lost that round! CPU had ${computerSelection}`;
         }
     }
 
@@ -99,10 +110,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
             playerScore += 1;
-            result.textContent="You Won! Paper beats rock!";
+            result.textContent=`You Won! ${playerSelection} beats ${computerSelection}`;
         }else{
             compScore += 1;
-            result.textContent="You lost that round.";
+            result.textContent=`You lost that round! CPU had ${computerSelection}`;
         }
     }
 
@@ -110,10 +121,10 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
             playerScore += 1;
-            result.textContent="You Won! Scissors beats paper!";
+            result.textContent=`You Won! ${playerSelection} beats ${computerSelection}`;
         }else{
             compScore += 1;
-            result.textContent="You lost that round.";
+            result.textContent=`You lost that round! CPU had ${computerSelection}`;
         }
     }
 }
