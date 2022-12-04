@@ -24,10 +24,10 @@ function playRound(playerSelection, computerSelection) {
     // if player selects rock and comp selects scissors, player wins, else loses
     else if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-            console.log("Player Won! Rock beats scissors!");
+            console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
             playerScore += 1;
         }else{
-            console.log("Player Lost..");
+            console.log(`Player Lost... CPU had ${computerSelection}`);
             compScore += 1;
         }
     }
@@ -35,10 +35,10 @@ function playRound(playerSelection, computerSelection) {
     // if player selects paper and comp selects rock, player wins, else loses
     else if (playerSelection === "paper") {
         if (computerSelection === "rock") {
-            console.log("Player Wins! Paper beats rock!");
+            console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
             playerScore += 1;
         }else{
-            console.log("Player Lost...");
+            console.log(`Player Lost... CPU had ${computerSelection}`);
             compScore += 1;
         }
     }
@@ -46,10 +46,10 @@ function playRound(playerSelection, computerSelection) {
     // if player selects scissors and comp selects paper, player wins, else loses
     else if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
-            console.log("Player Wins! Scissors beats paper!");
+            console.log(`Player Wins! ${playerSelection} beats ${computerSelection}`);
             playerScore += 1;
         }else{
-            console.log("Player Lost....");
+            console.log(`Player Lost... CPU had ${computerSelection}`);
             compScore += 1;
         }
     }
