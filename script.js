@@ -128,3 +128,29 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
+
+function game() {
+    // set the number of rounds
+    const rounds = 5;
+
+    // loops through "x" rounds and accumulates the results
+    for (let i = 0; i < rounds; i++) {
+        // playerSelection hardcoded for testing
+        let playerSelection = "rock".toLowerCase(); // prompt("Rock Paper or Scissor? " ).toLowerCase();
+        let computerSelection = getComputerChoice().toLowerCase();
+        console.log(`Player: ${playerSelection} | Cpu: ${computerSelection}`);
+        playRound(playerSelection, computerSelection);
+    }
+    
+    // compares scores after the 5 rounds and console.logs the winner (or tie)
+    if (playerScore > compScore) {
+        console.log(`Player Wins! Player: ${playerScore} | Cpu: ${compScore}`);
+    }
+    else if (playerScore === compScore) {
+        console.log(`The game is a tie! Player: ${playerScore} | Cpu: ${compScore} `);
+    }else{
+        console.log(`Player loses! Cpu: ${compScore} | Player: ${playerScore}`);
+    }
+}
+
+game();
