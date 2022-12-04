@@ -2,11 +2,7 @@
 // Rock Paper Scissors Game
 // Written by: Nicholas Ronzel
 // ----------------------------
-// ! BUG - after 5 round prevent the buttons from being clicked
-// can possibly handle this 2 ways:
-// 1 - set buttons to disabled state at game end
-// 2 - turn off the event listener after game end
-// ----------------------------
+
 
 // score initialization
 let playerScore = 0;
